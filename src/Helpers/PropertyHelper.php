@@ -3,23 +3,26 @@
 namespace Untek\Core\Property\Helpers;
 
 use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Core\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 
 class PropertyHelper
 {
 
-    public static function createObject(string $className, $attributes = [])
+    public static function createObject($className, array $attributes = []): object
     {
+        DeprecateHelper::softThrow();
         $entityInstance = ClassHelper::createObject($className);
         if ($attributes) {
-            \Untek\Core\Code\Helpers\PropertyHelper::setAttributes($entityInstance, $attributes);
+            \Untek\Core\Instance\Helpers\PropertyHelper::setAttributes($entityInstance, $attributes);
         }
         return $entityInstance;
     }
 
     public static function toArray($entity, bool $recursive = false): array
     {
+        DeprecateHelper::softThrow();
         $array = [];
         if (is_array($entity)) {
             $array = $entity;
@@ -30,7 +33,7 @@ class PropertyHelper
             if ($attributes) {
 //                $propertyAccessor = PropertyAccess::createPropertyAccessor();
                 foreach ($attributes as $attribute) {
-                    $array[$attribute] = \Untek\Core\Code\Helpers\PropertyHelper::getValue($entity, $attribute);
+                    $array[$attribute] = \Untek\Core\Instance\Helpers\PropertyHelper::getValue($entity, $attribute);
 //                    $array[$attribute] = $propertyAccessor->getValue($entity, $attribute);
                 }
             } else {
@@ -55,6 +58,7 @@ class PropertyHelper
 
     public static function getAttributeNames($entity): array
     {
+        DeprecateHelper::softThrow();
         $reflClass = new \ReflectionClass($entity);
         $attributesRef = $reflClass->getProperties();
         $attributes = ArrayHelper::getColumn($attributesRef, 'name');
