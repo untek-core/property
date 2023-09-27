@@ -10,6 +10,10 @@ use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterfa
 class PropertyHelper
 {
 
+    /**
+     * @deprecated
+     * @see \Untek\Core\Instance\Helpers\PropertyHelper::createObject
+     */
     public static function createObject($className, array $attributes = []): object
     {
         DeprecateHelper::softThrow();
@@ -20,6 +24,11 @@ class PropertyHelper
         return $entityInstance;
     }
 
+
+    /**
+     * @deprecated
+     * @see \Untek\Core\Instance\Helpers\PropertyHelper::toArray
+     */
     public static function toArray($entity, bool $recursive = false): array
     {
         DeprecateHelper::softThrow();
@@ -56,6 +65,10 @@ class PropertyHelper
         return $array;
     }
 
+    /**
+     * @deprecated
+     * @see \Untek\Core\Instance\Helpers\PropertyHelper::getAttributeNames
+     */
     public static function getAttributeNames($entity): array
     {
         DeprecateHelper::softThrow();
