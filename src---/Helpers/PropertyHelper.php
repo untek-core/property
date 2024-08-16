@@ -7,6 +7,8 @@ use Untek\Core\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 
+\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
 class PropertyHelper
 {
 
